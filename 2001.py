@@ -1,7 +1,7 @@
 import random
 import math
 
-def rzuty1(): #pierwsza tura gracza - dwa rzuty, każdy po wciśnięciu enter, wynik dodawany do listy punkty_gracza i zwracany jako suma_punktów
+def rzuty1(): # tura gracza - dwa rzuty, każdy po wciśnięciu enter, wynik dodawany do listy punkty_gracza i zwracany jako suma_punktów
     punkty_gracza = []
     for _ in range(2):
         text = input("Naciśnij enter, aby rzucić kostką")
@@ -14,7 +14,7 @@ def rzuty1(): #pierwsza tura gracza - dwa rzuty, każdy po wciśnięciu enter, w
     print(f"Masz obecnie {suma_punktow} punktów")
     return(suma_punktow)
 
-def rzuty2(): #pierwsza tura komputera - dwa rzuty, automatyczne losowanie numerów, dodawanych do listy punkty_komp
+def rzuty2(): # tura komputera - dwa rzuty, automatyczne losowanie numerów, dodawanych do listy punkty_komp
     punkty_komp = []
     for _ in range(2):
         x = random.randint(1,7)
