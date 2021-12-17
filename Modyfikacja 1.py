@@ -6,15 +6,15 @@ def wybor():
     wybor = input("Wybierz dwie kości z zestawu: D3, D4, D6, D8, D10, D12, D20, D100. \
     Swój wybór wpisz w formie: aDbD, gdzie a to liczba ścianek pierwszej kości, a b to liczba ścianek drugiej kości ")
     rzuty = list(wybor)
-    return(rzuty)
+    return(rzuty) #funkcja zwraca ciąg znaków wpisanych przez gracza w formie listy
 
-def spacje():
+def spacje(): #funckja usuwa spacje z listy, jeśli użytkownik je wpisał
     dane = wybor()
     dane = [x.strip(' ') for x in dane]
     delete = [ele for ele in dane if ele.strip()]
     return (delete)
 
-def merge():
+def merge(): #funckja łączy liczby, jeśli wpisane zostały w formie znaków, np. z pozycji na liście "1", "0", "0" tworzy pozycję "100"
     dane = spacje()
     index = 1
     while index < len(dane):
@@ -24,7 +24,7 @@ def merge():
             index += 1
     return (dane)
 
-def convert():
+def convert(): #funckja zamienia liczby wpisane przez użytkownika na formę int i zwraca wszystkie znaki w formie listy, np. [2, "D", 3, "D"]
     newdane = merge()
     for i in range(0, len(newdane)):
         try:
@@ -33,41 +33,41 @@ def convert():
             pass
     return (newdane)
 
-def rzuty1():
+def rzuty1(): #rzuty gracza - pobieranie danych funkcji convert
     punkty_gracza = []
     dane = convert()
     text = input("Naciśnij enter, aby rzucić kostką")
-    if text == "":
+    if text == "": #po wciśnięciu przez gracza enter funkcja zwraca lsowo wybran liczby z zakresu wprowadzonego przez gracza
         for index, i in enumerate(dane):
             if index == 0:
                 if i in scianki:
                     x = random.randint(1, i)
-                    punkty_gracza.append(x)
+                    punkty_gracza.append(x) # dodwanie losowej liczby do listy z łącznnymi punktami
                 else:
-                    print("1Podaj poprawne dane")
+                    print("Podaj poprawne dane") #jeśli gracz coś wpisze, zamiast wcisnąć enter, program zwraca informację o niepoprawnych danych
                     break
             if index == 2:
                 if i in scianki:
                     x = random.randint(1, i)
-                    punkty_gracza.append(x)
+                    punkty_gracza.append(x) # dodwanie losowej liczby do listy z łącznnymi punktami - drugi rzut kostką w turze
                 else:
-                    print("2Podaj poprawne dane")
+                    print("Podaj poprawne dane") #jeśli gracz coś wpisze, zamiast wcisnąć enter, program zwraca informację o niepoprawnych danych
                     break
             if index == 1:
-                if i == "D":
+                if i == "D": #sprawdzanie, czy gracz wpisał odpowiedni ciąg znaków
                     pass
                 else:
-                    print("3Podaj poprawne dane")
+                    print("Podaj poprawne dane") #jeśli gracz coś wpisze, zamiast wcisnąć enter, program zwraca informację o niepoprawnych danych
                     break
             if index == 3:
-                if i == "D":
+                if i == "D": #sprawdzanie, czy gracz wpisał odpowiedni ciąg znaków
                     pass
                 else:
-                    print("4Podaj poprawne dane")
+                    print("Podaj poprawne dane") #jeśli gracz coś wpisze, zamiast wcisnąć enter, program zwraca informację o niepoprawnych danych
                     break
     else:
         print("you typed some text before pressing enter")
-    suma_punktow = sum(punkty_gracza)
+    suma_punktow = sum(punkty_gracza) #sumowanie punktów gracza nal iście
     print(f"Masz obecnie {suma_punktow} punktów")
     return (suma_punktow)
 
